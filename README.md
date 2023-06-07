@@ -1,5 +1,7 @@
 # chainlit chat app using Huggingface models
 
+This is a simple demonstration of LLM use with chainlit
+
 This application contains artifacts distributed under the license of the Apache License, Version 2.0.
 http://www.apache.org/licenses/LICENSE-2.0
 
