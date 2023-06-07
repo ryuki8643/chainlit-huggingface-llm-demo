@@ -1,6 +1,6 @@
 # chainlit chat app using Huggingface models
 
-This is a simple demonstration of LLM use with chainlit
+This is a simple demonstration of chat app use with chainlit using huggingface model without API key
 
 https://github.com/Chainlit/chainlit
 
