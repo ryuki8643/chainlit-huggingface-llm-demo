@@ -1,24 +1,25 @@
 import chainlit as cl
 
 
-import torch
+import models.facebook_blenderbot_400m as model
 
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+#falcon models are big and need a lot of ram and gpu and disk space especially 40b
+# import models.tiiuae_falcon_7b as model
+# import models.tiiuae_falcon_40b as model
 
-tokenizer = AutoTokenizer.from_pretrained("facebook/blenderbot-400M-distill")
 
-model = AutoModelForSeq2SeqLM.from_pretrained("facebook/blenderbot-400M-distill")
+@cl.on_chat_start
+def main():
+
+    cl.Message(
+        content=f"My name is {model.name()}",
+    ).send()
 
 @cl.on_message
 def main(message: str):
 
-    input_ids = tokenizer(message, return_tensors="pt").input_ids
+    model_output_message=model.chat_message(message)
 
-    generation_output = model.generate(
-        input_ids=input_ids
-    )
-    model_output_message=tokenizer.decode(generation_output[0])
-    model_output_message=model_output_message.replace("<s>","").replace("</s>","")
     cl.Message(
         content=model_output_message,
     ).send()
