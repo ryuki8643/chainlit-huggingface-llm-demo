@@ -1,24 +1,13 @@
 import chainlit as cl
 
 
-import torch
-
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-
-tokenizer = AutoTokenizer.from_pretrained("facebook/blenderbot-400M-distill")
-
-model = AutoModelForSeq2SeqLM.from_pretrained("facebook/blenderbot-400M-distill")
+import models.facebook_blenderbot_400m as model
 
 @cl.on_message
 def main(message: str):
 
-    input_ids = tokenizer(message, return_tensors="pt").input_ids
-
-    generation_output = model.generate(
-        input_ids=input_ids
-    )
-    model_output_message=tokenizer.decode(generation_output[0])
-    model_output_message=model_output_message.replace("<s>","").replace("</s>","")
+    model_output_message=model.chat_message(message)
+    
     cl.Message(
         content=model_output_message,
     ).send()

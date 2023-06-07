@@ -8,6 +8,9 @@ chainlit = "*"
 torch = "*"
 transformers = "*"
 sentencepiece = "*"
+einops = "*"
+accelerate = "*"
+
 [dev-packages]
 
 [requires]
