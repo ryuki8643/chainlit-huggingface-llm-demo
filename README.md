@@ -1,5 +1,8 @@
 # chainlit chat app using Huggingface models
 
+This application contains artifacts distributed under the license of the Apache License, Version 2.0.
+http://www.apache.org/licenses/LICENSE-2.0
+
 models
 
 light model default model for this demo you can run only on cpu [facebook/blenderbot-400M-distill](https://huggingface.co/facebook/blenderbot-400M-distill)
